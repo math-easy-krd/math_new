@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Математика с Оксаной | Репетиторский кабинет</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,13 +21,14 @@
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
-            overflow-x: hidden;
+            overflow-x: hidden; /* Запрещаем прокрутку вбок */
+            width: 100%;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -41,6 +42,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            width: 100%;
         }
 
         /* --- ШАПКА --- */
@@ -125,7 +127,7 @@
         }
 
         /* --- О КАБИНЕТЕ --- */
-        .about { background-color: var(--dark-bg); color: var(--white); padding: 80px 0; }
+        .about { background-color: var(--dark-bg); color: var(--white); padding: 80px 0; width: 100%; }
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
         
         .about-images { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
@@ -170,7 +172,7 @@
         .price-item strong { font-size: 20px; color: var(--text-main); font-weight: 700; }
 
         /* --- ОТЗЫВЫ --- */
-        .reviews { padding: 80px 0; background-color: #ebe5d6; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .reviews { padding: 80px 0; background-color: #ebe5d6; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); width: 100%; }
         .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
         .review-card { background: var(--white); padding: 35px; position: relative; display: flex; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border-radius: 8px; border: 1px solid var(--border-color);}
         .review-quote-icon { font-family: 'Playfair Display', serif; font-size: 60px; color: var(--accent-color); line-height: 1; margin-bottom: -15px; opacity: 0.2; }
@@ -178,8 +180,8 @@
         .review-author { font-weight: 600; font-size: 15px; margin-bottom: 5px; border-top: 1px solid var(--border-color); padding-top: 20px; }
         .review-result { font-size: 13px; color: var(--accent-color); font-weight: 600; }
 
-        /* --- КОНТАКТЫ (ФУТЕР) --- */
-        .contacts { display: grid; grid-template-columns: 1.2fr 1fr; }
+        /* --- КОНТАКТЫ --- */
+        .contacts { display: grid; grid-template-columns: 1.2fr 1fr; width: 100%; }
         .contacts-left { background-color: var(--accent-color); color: white; padding: 80px 60px; }
         .contacts-left .hero-subtitle { color: rgba(255,255,255,0.9); }
         .contacts-left .hero-subtitle::before { background-color: rgba(255,255,255,0.9); }
@@ -195,48 +197,49 @@
         .contact-block h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: #f2a55f; margin-bottom: 8px; }
         .contact-block p { font-size: 20px; font-family: 'Playfair Display', serif; color: white;}
 
-        /* --- АДАПТАЦИЯ ПОД ТЕЛЕФОНЫ (ИДЕАЛЬНАЯ ВЕРСТКА) --- */
+        /* --- ИДЕАЛЬНАЯ АДАПТАЦИЯ ПОД ТЕЛЕФОНЫ --- */
         @media (max-width: 992px) {
+            /* Страховка от вылезания за экран */
+            * { min-width: 0 !important; } 
+            body, html { overflow-x: hidden !important; width: 100% !important; }
+
             /* Шапка */
             .header-inner { flex-direction: column; gap: 15px; text-align: center; }
-            .header-phone { display: none; } /* Убираем номер из шапки на телефоне, он есть внизу */
-            nav { display: none; } /* Убираем меню на телефоне */
+            .header-phone { display: none; } 
+            nav { display: none; } 
             
             /* Главный экран */
             .hero { padding: 40px 0; }
-            .hero-grid { grid-template-columns: 1fr; gap: 30px; }
-            .hero h1 { font-size: 38px; }
-            .hero-desc { max-width: 100%; font-size: 16px; margin-bottom: 25px; }
+            .hero-grid { grid-template-columns: 1fr !important; gap: 30px; }
+            .hero h1 { font-size: 36px; }
+            .hero-desc { max-width: 100%; font-size: 16px; }
             
-            /* Кнопки в столбик */
-            .buttons { flex-direction: column; width: 100%; gap: 12px; margin-bottom: 30px;}
+            .buttons { flex-direction: column; width: 100%; gap: 12px; }
             .btn { width: 100%; padding: 16px 20px; }
             
-            /* Статистика */
-            .stats { text-align: center; gap: 15px; padding-top: 25px; }
-            .stat-item h3 { font-size: 28px; }
-            .stat-item p { font-size: 12px; }
+            .stats { text-align: center; gap: 10px; }
+            .stat-item h3 { font-size: 26px; }
+            .stat-item p { font-size: 11px; }
             
-            /* Картинка */
-            .hero-image { height: 320px; border-radius: 8px; }
+            .hero-image { height: 300px; }
             
             /* О кабинете */
             .about { padding: 50px 0; }
-            .about-grid { grid-template-columns: 1fr; gap: 30px; }
-            .about-images { display: none; } /* Прячем лишние фото на телефоне, чтобы не растягивать */
-            .about-features { grid-template-columns: 1fr; gap: 12px; margin-bottom: 30px; }
-            .quote-box { font-size: 18px; }
+            .about-grid { grid-template-columns: 1fr !important; gap: 30px; }
+            .about-images { display: none !important; } 
+            .about-features { grid-template-columns: 1fr; gap: 12px; }
+            .about h2 { font-size: 30px; }
             
-            /* Направления и цены */
+            /* Направления */
             .directions { padding: 50px 0; }
             .direction-row { 
-                grid-template-columns: 40px 1fr; 
+                grid-template-columns: 35px 1fr !important; 
                 gap: 10px; 
                 padding: 25px 0;
             }
-            .dir-num { grid-row: span 3; font-size: 22px; padding-top: 3px;}
-            .dir-title { font-size: 20px; padding-right: 0;}
-            .dir-desc { grid-column: 2; margin-top: 5px; padding-right: 0; }
+            .dir-num { grid-row: span 3; font-size: 20px; padding-top: 3px;}
+            .dir-title { font-size: 19px; padding-right: 0;}
+            .dir-desc { grid-column: 2; margin-top: 5px; padding-right: 0; font-size: 14px; }
             .dir-prices { 
                 grid-column: 2; 
                 margin-top: 15px; 
@@ -250,11 +253,13 @@
             
             /* Отзывы и контакты */
             .reviews { padding: 50px 0; }
-            .reviews-grid { grid-template-columns: 1fr; gap: 20px; margin-top: 30px;}
+            .reviews-grid { grid-template-columns: 1fr !important; gap: 20px; margin-top: 30px;}
             .review-card { padding: 25px; }
+            .review-text { font-size: 15px; }
             
-            .contacts { grid-template-columns: 1fr; }
+            .contacts { grid-template-columns: 1fr !important; width: 100%; }
             .contacts-left, .contacts-right { padding: 50px 20px; }
+            .contact-block p { font-size: 18px; }
         }
     </style>
 </head>
